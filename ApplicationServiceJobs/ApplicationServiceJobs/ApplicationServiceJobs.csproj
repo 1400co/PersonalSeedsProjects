@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="ConsoleLogProvider.cs" />
     <Compile Include="Jobs\HelloJob.cs" />
+    <Compile Include="Jobs\HelloJob2.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

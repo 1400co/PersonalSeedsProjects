@@ -3,6 +3,7 @@ using Quartz.Impl;
 using Quartz.Logging;
 using System;
 using System.Collections.Specialized;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using ApplicationServiceJobs.Jobs;
 
@@ -10,6 +11,11 @@ namespace ApplicationServiceJobs
 {
     class Program
     {
+        #region Members
+        private static string _Group = "Group1";
+        #endregion
+
+
         static void Main(string[] args)
         {
             LogProvider.SetCurrentLogProvider(new ConsoleLogProvider());
@@ -23,7 +29,8 @@ namespace ApplicationServiceJobs
 
         private static void ConfigureJobs(IScheduler scheduler)
         {
-            SetJob<HelloJob>(scheduler, "JobFlowRunner", "Group1", 1);
+            SetJob<HelloJob>(scheduler, "JobFlowRunner", _Group, 1);
+            SetJob<HelloJob2>(scheduler, "JobFlowRunner2", _Group, 1);
         }
 
         private static async Task RunProgramRunExample()
@@ -42,7 +49,7 @@ namespace ApplicationServiceJobs
                 await scheduler.Start();
 
                 ConfigureJobs(scheduler);
-                
+
             }
             catch (SchedulerException se)
             {
@@ -77,7 +84,7 @@ namespace ApplicationServiceJobs
 
     }
 
-    
+
 }
 
 
