@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{65518728-AEE5-4CFA-8FD3-4E98FD5AC3B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UmpaLumpaBTC.BusinessLayer</RootNamespace>
+    <AssemblyName>UmpaLumpaBTC.BusinessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Quartz">
+      <HintPath>..\packages\Quartz.3.0.0\lib\net452\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IMarketProvider.cs" />
+    <Compile Include="ITransactionLayer.cs" />
+    <Compile Include="MarketProvider.cs" />
+    <Compile Include="TransactionLayer.cs" />
+    <Compile Include="UmpaLumpaWorker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UmpaLumpaBTC.Coinmarketcap.Client\UmpaLumpaBTC.Coinmarketcap.Client.csproj">
+      <Project>{1954718e-f36f-4b13-ab70-2fd6dc77f36c}</Project>
+      <Name>UmpaLumpaBTC.Coinmarketcap.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UmpaLumpaBTC.Common\UmpaLumpaBTC.Common.csproj">
+      <Project>{f9bf332f-26ad-4033-8ada-7a3b177b0be1}</Project>
+      <Name>UmpaLumpaBTC.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UmpaLumpaBTC.Persistence\UmpaLumpaBTC.Persistence.csproj">
+      <Project>{aab735c0-de20-4739-b732-8f49bd68b5ef}</Project>
+      <Name>UmpaLumpaBTC.Persistence</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UmpaLumpaBTC.Providers.Interface\UmpaLumpaBTC.Providers.Interface.csproj">
+      <Project>{25edb6e1-146c-44d7-aa05-bb469b6d67c5}</Project>
+      <Name>UmpaLumpaBTC.Providers.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
