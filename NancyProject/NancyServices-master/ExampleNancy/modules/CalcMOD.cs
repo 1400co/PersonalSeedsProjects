@@ -3,6 +3,7 @@ using Nancy;
 using Nancy.Extensions;
 using Newtonsoft.Json;
 using System;
+using ExampleNancy.Raven;
 using WalletsApi.Views;
 
 namespace ExampleNancy.modules
@@ -10,10 +11,12 @@ namespace ExampleNancy.modules
 
     public class CalcMod : NancyModule
     {
+        private IDocStore _docStore;
 
-        public CalcMod()
+        public CalcMod(IDocStore docStore)
         {
-            
+            _docStore = docStore;
+
             Get("/calc/{category}", parameters =>
             {
                 var wallet = new WalletView()

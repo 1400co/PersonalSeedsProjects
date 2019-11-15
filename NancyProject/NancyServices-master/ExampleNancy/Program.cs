@@ -1,41 +1,31 @@
-﻿using Nancy.Hosting.Self;
-using Raven.Client.Documents;
+﻿using ExampleNancy.Raven;
+using Nancy.Hosting.Self;
 using System;
-using ExampleNancy.Raven;
-using Raven.Client.Documents.Operations;
-using Raven.Client.Exceptions;
-using Raven.Client.Exceptions.Database;
-using Raven.Client.ServerWide;
-using Raven.Client.ServerWide.Operations;
-using Unity;
-using Unity.Injection;
-using Unity.Lifetime;
+using StructureMap;
+
 
 namespace ExampleNancy
 {
     class Program
     {
         private static readonly string Db = "SubscribersPart0";
-        static IUnityContainer _container;
+        static IContainer _container;
 
         static void Main(string[] args)
         {
             ConfigureContainer();
-        
             ConfigureNancy();
-
         }
 
         private static void ConfigureContainer()
         {
-            _container = new UnityContainer();
+            _container = new Container();
 
-            _container.RegisterInstance(new DocStore("http://127.0.0.1:8091",Db));
-
-           
+            _container.Configure(cfg =>
+            {
+               
+            });
         }
-
-
 
         static void ConfigureNancy()
         {
@@ -50,6 +40,8 @@ namespace ExampleNancy
                 Console.ReadKey();
             }
         }
+
+
 
     }
 }
